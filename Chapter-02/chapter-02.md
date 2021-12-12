@@ -64,3 +64,95 @@ public static void main(String[] args) {
 > 대괄호가 없는 String args는 단칸방 하나라고 보면 된다.  
 > 대괄호가 있는 String [] args 는 단칸방들이 모여 있는 고시원이라고 보면 된다.  
 > 여러개의 문자열을 한 번에 보내려면 이와 같이 배열이라는 것을 사용하면 된다.
+
+그러면 Hello 클래스에 이 main() 메소드를 추가하자.
+```java
+public class HelloGodOfJava {
+    public static void main(String[] args) {
+        
+    }
+    // 이하 생략
+}
+```
+이제 이 메소드를 넣고 나니 HelloGodOfJava  클래스가 좀 있어 보인다. 이 클래스를 javac로 컴파일하고 java 명령어로 실행해보자
+![add-main-method](img/add-main-method.png)
+결과를 보기 위해서 main() 메소드에 다음과 같이 한 줄을 추가하자
+```java
+public class HelloGodOfJava {
+    public static void main(String[] args) {
+        System.out.println("Hello God Of Java !!!!!");     
+    }
+    // 이하 생략
+}
+```
+컴파일 하면 다음과 같은 결과가 나타난다.
+![re-compile](img/re-compile.png)
+
+## System.out.println() 과 System.out.print() 
+System.out.println()은 괄호 안의 내용을 출력하고 다음 줄로 넘긴다.
+다음과 같이 한 줄을 추가하자.
+```java
+public class HelloGodOfJava {
+    public static void main(String[] args) {
+        System.out.println("Hello God Of Java !!!!!");
+        System.out.println("I love this book.");
+    }
+    // 이하 생략
+}
+```
+다시 컴파일을 하고 실행시켜보자
+![add-one-line](img/add-one-line.png)
+이번에는 println() 대신 print()메소드로 바꿔서 수행해보자
+```java
+public class HelloGodOfJava {
+    public static void main(String[] args) {
+        System.out.println("Hello God Of Java !!!!!");
+        System.out.print("I love this book.");
+    }
+    // 이하 생략
+}
+```
+![remove-ln](img/remove-ln.png)
+줄이 바뀌지 않는다.
+
+## 주석(comment) 처리하기
+
+### 자바에서의 주석
+1. 한줄 주석
+   - 한 줄만 주석 처리를 한다.
+```java
+//
+```
+
+2. 블록 주석
+   - 여러 줄을 한꺼번에 주석 처리 할 때 사용된다.
+```java
+/*
+ */
+```
+3. 문서용 주석
+    - 자주 사용은 안하지만 문서용 주석이 클래스 선언 바로 앞이나, 메소드 선언 바로 앞에 있으면 문서용 주석으로 인식되어 처리된다.
+```java
+/**
+ * 
+ */
+```
+
+## 메소드를 직접 만들어 보자
+
+```java
+public class Calculator {
+    public static void main(String[] args) {
+        System.out.println("Calculator class started");
+    }
+}
+```
+
+하나의 메소드는 다음과 같이 여섯 부분으로 나뉠 수 있다.
+1. 제어자(modifier): main() 메서드에 있는 public static과 같은 메소드의 특성을 정하는 부분이다.
+2. 리턴 타입(return type): 메소드가 끝났을 떄 돌려주는 타입을 말한다.
+3. 메소드 이름(method name): 소괄호 앞에 있는 메소드 이름을 말한다.
+4. 매개 변수 목록(parameter list): 소괄호 안에 있는 매개 변수의 목록을 말한다.
+5. 예외 목록(exception list): 메소드의 소괄호가 끝나는 부분과 중괄호가 시작하는 부분 사이에 예외 목록이라는 것을 선언할 수 있다.
+6. 메소드 내용(method body): 중괄호 안에 있는 내용들을 말한다.
+
