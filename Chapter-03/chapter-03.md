@@ -44,5 +44,182 @@ public class Car {
     }
 }
 ```
+Car 클래스 밑에 있는 메소드 같이 생긴 것은 생성자(Constructor)라고 부른다  
+생성자는 Car 클래스의 객체를 생성할 때 필요하다.  
+이 Car 클래스의 주행중인 상태, 주행한 상태, 차 색깔의 상태 등을 다음과 같이 변수로 나타낼 수 있다.  
+```java
+public class Car {
+    public Car() {
+    }
+    int speed;
+    int distance;
+    String color;
+}
+```
+이렇게 변수를 지정함으로써 클래스의 상태를 정할 수 있다.
+```java
+public class Car {
+    int speed;
+    int distance;
+    String color;
+    
+    public Car() {
+    }
+    public void speedUp() {
+        // 내용 생략
+    }
+    public void breakDown() {
+        // 내용 생략
+    }
+}
+```
+이렇게 속도를 올리는 speedUp() 메소드와 속도를 줄이는 breakDown() 메소드로 클래스의 상태를 변경하는 행위를 지정할 수 있다.
 
+__SmartPhone 클래스__
 
+```java
+public class SmartPhone {
+   boolean isDeviceTurnOn;
+   boolean isDeviceTurnOff;
+   boolean isScreenTurnOn;
+   boolean isScreenTurnOff;
+
+   public SmartPhone() {
+   }
+
+   public void setDeviceTurnOn(boolean deviceTurnOn) {
+      // 내용 생
+   }
+
+   public void setDeviceTurnOff(boolean deviceTurnOff) {
+      // 내용 생략
+   }
+
+   public void setScreenTurnOn(boolean screenTurnOn) {
+      // 내용 생략
+   }
+
+   public void setScreenTurnOff(boolean screenTurnOff) {
+      // 내용 생략
+   }
+}
+```
+
+## 클래스와 객체는 구분하셔야 해요
+각각의 실제 사물을 나타내기 위한 것을 "객체(object)" 혹은 "안스턴스(instance)" 라고 한다.  
+자동차를 관리하는 CarManager 클래스를 만들고, 그 안에 main() 클래스를 만들자
+```java
+public class CarManager {
+   public static void main(String[] args) {
+      // 앞으로 여기에 코드가 들어감
+   }
+}
+```
+
+이 CarManager 라는 클래스에서 서로 다른 차를 나타내기 위해서는 Car 클래스를 이용하여 생성한다.
+
+```java
+Car dogCar =  new Car();
+Car cowCar =  new Car();
+```
+
+### Car()
+여기에 "Car()" 라고 하는 메소드 같이 생긴 "생성자(constructor)" 를 사용하고 있다.  
+생성자는 객체를 생성하기 위한 유일한 도구다.  
+Car() 처럼 매개 변수가 없는 생성자는 만들지 않아도 괜찮다.  
+매개 뱐수가 없는 생성자를 "기본 생성자(default constructor)" 라고 한다.  
+기본 생성자는 클래스를 컴파일할 떄 javac를 실행하면 클래스 파일 안에 자동으로 만들어진다.  
+ 
+### new
+그리고 new 라는 것은 예약어이다. 이 new 라는 단어 뒤에는 클래스의 생성자를 지정하면 된다.  
+"Car" 라는 클래스는 그냥 껍데기일 뿐이고, new라는 예약어를 통해서 생성자인 Car()를 호출하면 dogCar나 cowCar라는 객체가 생성된다.  
+즉, 클래스는 대부분 그 차제만으로 일을 할 수 없고, 객체를 생성해야만 우리가 일을 시킬 수 있다.  
+```java
+cowCar.speedUp();
+```
+
+다시 말해서, 소똥이 차의 속도를 높이고 싶다면 cowCar 객체를 만들고, 그 객체의 speedUp() 메소드를 불러주면 된다.  
+<br/>
+작성된 전체 소스는 다음과 같다.
+
+```java
+public class CarManager {
+   public static void main(String[] args) {
+        Car dogCar = new Car();
+        Car cowCar = new Car();
+        cowCar.speedUp();
+   }
+}
+```
+
+## Car 클래스를 구현하자
+```java
+public class Car {
+    int speed;
+    int distance;
+    String color;
+    
+    public Car() {
+    }
+    public void speedUp() {
+        // 내용 생략
+    }
+    public void breakDown() {
+        // 내용 생략
+    }
+}
+```
+여기서 speedUp() 메소드와 breakDown() 메소드는 구현이 되지 않았다.    
+구현 조건
+- speedUp() 메소드를 호출하면 speed는 5씩 증가한다.
+- breakDown() 메소드를 호출하면 speed는 10씩 감소한다. 
+
+```java
+public void speedUp() {
+    speed = speed + 5;
+        }
+```
+```java
+public void breakDown() {
+    speed = speed - 10;
+        }
+```
+
+여기서 speed 라는 변수는 speedUp() 메소드에 선언되어 있지 않았다.  
+하지만 Car 클래스에 선언되어 있다.  
+이렇게 속도를 증가시키고, 감소시켜도 현재의 속도를 확인할 수 있는 방법이 없다.  
+따라서 현재 속도를 확인할 수 있는 getCurrentSpeed() 메소드를 만들자.
+
+```java
+public class Car {
+   int speed;
+   int distance;
+   String color;
+
+   public Car() {
+   }
+
+   public void speedUp() {
+      speed = speed + 5;
+   }
+
+   public void breakDown() {
+      speed = speed - 10;
+   }
+
+   public int getCurrentSpeed() {
+      return speed;
+   }
+}
+```
+개똥이 차의 속도를 증가시키고 감소시키기
+```java
+public class CarManager {
+   public static void main(String[] args) {
+        Car dogCar = new Car();
+        dogCar.speedUp();
+        dogCar.speedUp();
+        System.out.println();
+   }
+}
+```
