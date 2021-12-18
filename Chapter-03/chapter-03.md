@@ -219,7 +219,49 @@ public class CarManager {
         Car dogCar = new Car();
         dogCar.speedUp();
         dogCar.speedUp();
-        System.out.println();
+        System.out.println(dogCar.getCurrentSpeed());
+        dogCar.breakDown();
+        System.out.println(dogCar.getCurrentSpeed());
    }
 }
+```
+
+## 계산기 클래스를 만들어보자
+계산기의 기본적인 기능인 더하기, 빼기, 곱하기, 나누기 기능을 제공하느 클래스와 메소드를 만들어보자  
+각 메소드는 두 개의 정수를 매개 변수로 받아서 계산해야만 한다.  
+참고로 더하기는 add, 빼기는 subtract, 곱하기는 multiply, 나누기는 divide 다.  
+```java
+public class Calculator {
+   public static void main(String[] args) {
+      System.out.println("Calculator class started");
+   }
+   public int add(int a, int b) {
+       return a + b;
+   }
+   public int subtract(int a, int b) {
+       return a - b;
+   }
+   public int multiply(int a, int b) {
+       return a * b;
+   }
+   public int divide(int a, int b) {
+       return a / b;
+   }
+}
+```
+
+a에는 10을 지정해 주고, b에는 5를 지정해 주었다.  
+calc.add(10, 5); 이렇게 지정해도 전혀 문제되지 않는다. 하지만 값을 계속 넘겨줄 때에는 변수를 지정해서 매개 변수로 넘겨 주는 것이 좋다.  
+
+```java
+public static void main(String[]args){
+    System.out.println("Calcualator class is started");
+    Calculator calc = new Calculator();
+    int a = 10;
+    int b = 5;
+    System.out.println("add=" + calc.add(a, b));
+    System.out.println("subtract=" + calc.subtract(a, b));
+    System.out.println("multiply=" + calc.multiply(a, b));
+    System.out.println("divide=" + calc.divide(a, b));
+        }
 ```
