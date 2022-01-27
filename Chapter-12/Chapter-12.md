@@ -1,4 +1,4 @@
-#12장 모든 클래스의 부모 클래스는 Object에요
+# 12장 모든 클래스의 부모 클래스는 Object에요
 ## 모든 자바 클래스의 부모인 java.lang.Object 클래스
 - 모든 클래스의 부모 클래스가 있다
 ```java
@@ -304,6 +304,7 @@ public class MemberDTO {
         return true;
     }
 
+    @Override
     public int hashCode() {
 
         final int prime = 31;
